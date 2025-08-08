@@ -1,0 +1,7 @@
+/*.writeFrm {width: 800px; border: 5px solid silver; border-radius: 20px; padding: 15px; display: flex; flex-direction: column; align-items: center;}*/
+
+/*.writeFrm .field {display: flex; margin: 5px 0; justify-content: space-between; border: 1px solid black;}*/
+/*.writeFrm .field label {flex: 1; font-weight: bold; margin: 5px 0;}*/
+/*.writeFrm .field textarea {flex: 4; border-radius: 10px;}*/
+/*.writeFrm .field input[type=file] {flex:4; border-radius: 10px; border:1px solid black;}*/
+/*.writeFrm .field img {flex:1; border-radius: 10px; border:1px solid blue;}*/

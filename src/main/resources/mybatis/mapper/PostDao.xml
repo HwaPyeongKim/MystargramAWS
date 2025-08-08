@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.himedia.gram.dao.IPostDao">
+
+    <insert id="insert" parameterType="com.himedia.gram.dto.PostDto" useGeneratedKeys="true" keyProperty="id">
+        insert into post (writer, content, image) values (#{writer}, #{content}, #{image})
+    </insert>
+
+    <select id="getHashtag" resultType="com.himedia.gram.dto.HashDto">
+        select * from hashtag where word = #{tag}
+    </select>
+
+    <insert id="insertHash">
+        insert into hashtag (word) values (#{tag})
+    </insert>
+
+    <insert id="insertHashPost">
+        insert into hashpost (postid, hashtagid) values (#{postid}, #{hashid})
+    </insert>
+</mapper>

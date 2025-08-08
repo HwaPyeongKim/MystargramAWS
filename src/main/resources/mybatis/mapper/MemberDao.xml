@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.himedia.gram.dao.IMemberDao">
+
+    <select id="getMember" resultType="com.himedia.gram.dto.MemberDto">
+        select * from member where email = #{email}
+    </select>
+
+    <select id="getMemberSns" resultType="com.himedia.gram.dto.MemberDto">
+        select * from member where snsid = #{snsid}
+    </select>
+
+    <insert id="insert" parameterType="com.himedia.gram.dto.MemberDto">
+        insert into member (email, pwd, nickname, phone, provider, snsid, profileimg, profilemsg) values (#{email}, #{pwd}, #{nickname}, #{phone}, #{provider}, #{snsid}, #{profileimg}, #{profilemsg})
+    </insert>
+
+
+</mapper>

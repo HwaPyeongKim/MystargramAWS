@@ -6,6 +6,7 @@
     <title>Title</title>
     <link rel="stylesheet" type="text/css" href="/css/mystargram.css">
     <link rel="stylesheet" type="text/css" href="/css/write.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.slim.js" integrity="sha256-UgvvN8vBkgO0luPSUl2s8TIlOSYRoGFAX4jlCIm9Adc=" crossorigin="anonymous"></script>
     <script src="scripts/mystargram.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type="text/javascript">
@@ -74,7 +75,7 @@
         <div class="topmenu">
             <a href="main"><img src="/images/home.png" /></a>
             <a href="writeForm"><img src="/images/write.png" /></a>
-            <a href=""><img src="/images/search.png" /></a>
+            <a href="#" class="btn_searchbox"><img src="/images/search.png" /></a>
             <a href="mypage"><img src="${loginUser.profileimg}" /></a>
             <a href="logout"><img src="/images/logout.png" /></a>
         </div>

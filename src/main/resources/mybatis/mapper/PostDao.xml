@@ -20,4 +20,48 @@
     <insert id="insertHashPost">
         insert into hashpost (postid, hashtagid) values (#{postid}, #{hashid})
     </insert>
+
+    <select id="getAllCountPost" resultType="_int">
+        select count(*) from post
+    </select>
+
+    <select id="select" resultType="com.himedia.gram.dto.PostDto">
+        select * from view_post limit #{displayRow} offset #{startNum}
+    </select>
+
+    <select id="selectPost" resultType="com.himedia.gram.dto.PostDto">
+        select * from view_post where writer = #{writer}
+    </select>
+
+    <select id="selectLike" resultType="com.himedia.gram.dto.LikeDto">
+        select * from likes where memberid = #{memberid} and postid = #{postid}
+    </select>
+
+    <insert id="addLike">
+        insert into likes (memberid, postid) values (#{memberid}, #{postid})
+    </insert>
+
+    <delete id="deleteLike">
+        delete from likes where memberid = #{memberid} and postid = #{postid}
+    </delete>
+
+    <select id="selectFollow" resultType="com.himedia.gram.dto.FollowDto">
+        select * from follow where start = #{memberid} and end = #{writer}
+    </select>
+
+    <insert id="addFollow">
+        insert into follow (start, end) values (#{memberid}, #{writer})
+    </insert>
+
+    <delete id="deleteFollow">
+        delete from follow where start = #{memberid} and end = #{writer}
+    </delete>
+
+    <select id="selectPostid" resultType="_int">
+        select postid from hashpost where hashtagid = #{hashid}
+    </select>
+
+    <select id="getPost" resultType="com.himedia.gram.dto.PostDto">
+        select * from view_post where id = #{postid}
+    </select>
 </mapper>

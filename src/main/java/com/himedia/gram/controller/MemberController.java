@@ -1,6 +1,7 @@
 package com.himedia.gram.controller;
 
 import com.google.gson.Gson;
+import com.himedia.gram.dto.FollowDto;
 import com.himedia.gram.dto.KakaoProfile;
 import com.himedia.gram.dto.MemberDto;
 import com.himedia.gram.dto.OAuthToken;
@@ -20,6 +21,7 @@ import javax.net.ssl.HttpsURLConnection;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 @Controller
@@ -201,5 +203,29 @@ public class MemberController {
         return "redirect:/";
     }
 
+    @GetMapping("/mypage")
+    public String mypage(HttpSession session, Model model) {
+        MemberDto mdto = (MemberDto) session.getAttribute("loginUser");
+        String url = "redirect:/";
+        if (mdto != null) {
+            ArrayList<String> followers = ms.selectFollowers(mdto.getId());
+            ArrayList<String> followings = ms.selectFollowings(mdto.getId());
+            model.addAttribute("followers", followers);
+            model.addAttribute("followings", followings);
+            model.addAttribute("list", ms.selectPost(mdto.getId()));
+            url = "member/mypage";
+        }
+        return url;
+    }
 
+    @GetMapping("/editProfileForm")
+    public String updateMemberForm(HttpSession session, Model model) {
+        MemberDto mdto = (MemberDto) session.getAttribute("loginUser");
+        String url = "member/loginForm";
+        if (mdto != null) {
+            model.addAttribute("dto", mdto);
+            url = "member/editProfile";
+        }
+        return url;
+    }
 }

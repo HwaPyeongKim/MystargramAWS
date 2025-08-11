@@ -2,28 +2,27 @@
 <%@ include file="../header.jsp" %>
 
 <div class="form">
-  <form method="post" action="join" name="joinFrm" id="joinFrm" enctype="multipart/form-data">
+  <form method="post" action="editProfile" name="updateFrm" id="updateFrm" enctype="multipart/form-data">
     <input type="hidden" name="profileimg" id="image" value="${dto.profileimg}" />
-    <input type="hidden" name="reemail" id="reemail" value="${reemail}" />
-    <input type="hidden" name="provider" value="none" />
+    <input type="hidden" name="provider" value="${dto.provider}" />
 
-    <h2>Member Join</h2>
+    <h2>Edit Profile</h2>
     <div class="field">
       <label for="email">Email</label>
       <div class="inputEmail">
-        <input type="email" name="email" id="email" value="${dto.email}" />
-        <input type="button" value="중복체크" id="emailChk" />
-        <div id="emailMsg"></div>
+        <input type="email" name="email" id="email" value="${dto.email}" readonly />
       </div>
     </div>
-    <div class="field">
-      <label for="pwd">Password</label>
-      <input type="password" name="pwd" id="pwd" />
-    </div>
-    <div class="field">
-      <label for="pwdChk">Retype Password</label>
-      <input type="password" name="pwdChk" id="pwdChk" />
-    </div>
+    <c:if test="${dto.provider == 'none'}">
+        <div class="field">
+          <label for="pwd">Password</label>
+          <input type="password" name="pwd" id="pwd" />
+        </div>
+        <div class="field">
+          <label for="pwdChk">Retype Password</label>
+          <input type="password" name="pwdChk" id="pwdChk" />
+        </div>
+    </c:if>
     <div class="field">
       <label for="nickname">Nickname</label>
       <input type="text" name="nickname" id="nickname" value="${dto.nickname}" />
@@ -49,21 +48,10 @@
     </div>
     <p class="warn">${msg}</p>
     <div class="btns">
-      <input type="submit" value="Join" />
+      <input type="submit" value="Edit" />
       <input type="button" value="Back" onclick="history.back()" />
     </div>
   </form>
 </div>
-
-<!--
-<div class="form" id="selectImg">
-  <form method="post" enctype="multipart/form-data" id="selectImg">
-    <div class="field">
-      <label for="profileimg">Image</label>
-      <input type="file" name="profileimg" id="profileimg" value="이미지 선택" />
-    </div>
-  </form>
-</div>
--->
 
 <%@ include file="../footer.jsp" %>

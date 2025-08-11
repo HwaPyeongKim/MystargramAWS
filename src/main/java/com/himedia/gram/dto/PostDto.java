@@ -11,7 +11,12 @@ public class PostDto {
     private int writer;
     private Timestamp writedate;
     private String image;
+    private int mid;
+    private String nickname;
+    private String email;
 
-    private boolean like;
-    private boolean follow;
+    private String like;
+    private String follow;
+    private int likecount;
+    private int replycount;
 }

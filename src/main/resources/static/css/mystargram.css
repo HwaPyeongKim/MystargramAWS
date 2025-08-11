@@ -1,9 +1,20 @@
 a {text-decoration: none; color: inherit;}
 input[type=button], input[type=submit] {cursor: pointer;}
+button {border: none; background: transparent; cursor: pointer; margin: 0 5px;}
 #wrap {width: 99vw; margin: 2px; display: flex; flex-direction: column; justify-content: flex-start; align-items: center;}
 .warn {color: #f00;}
 img.img {display: inline-block; width: 40px; height: 40px; border: 1px solid lightblue; border-radius: 50%; vertical-align: middle; margin-right: 5px;}
 img.img + span {display: inline-block;}
+
+.searchbox {display: none; width: 100%; border: 2px solid silver; margin-bottom: 30px; padding: 10px;}
+.searchbox label {width: 10%; font-weight: bold;}
+.searchbox input[type=text] {width: 70%;}
+.searchbox input[type=submit] {width: 10%;}
+
+.paging {}
+.paging a {margin:0 5px; font-size: 1.1em; font-weight: bold;}
+.paging a.on {color: #f00;}
+.paging a:hover {color: lightpink;}
 
 .form {width: 800px; margin-top: 50px; min-width: 500px; border: 5px solid silver; border-radius : 20px; padding: 15px; display: flex; flex-direction: column; align-items: center;}
 .form .field {display: flex; margin: 5px 0;}
@@ -16,9 +27,9 @@ img.img + span {display: inline-block;}
 .form .field #imgPrev img {max-width: 250px;}
 
 .btns, .snslogin {width: 100%; margin-top: 10px; display: flex; padding: 3px; box-sizing: border-box;}
-.btns input, .snslogin input {flex: 1; height: 30px; font-weight: bold; border: none; padding: 5px; font-size: 1.1rem; border-radius: 10px; margin-right: 5px;}
-.btns input {color: white; background: black;}
-.btns input:last-child, .snslogin input:last-child {margin-right: 0;}
+.btns input, .snslogin input, .btns a {flex: 1; height: 30px; font-weight: bold; border: none; padding: 5px; font-size: 1.1rem; border-radius: 10px; margin-right: 5px; text-align: center;}
+.btns input, .btns a {color: white; background: black;}
+.btns input:last-child, .snslogin input:last-child, .btns a:last-child {margin-right: 0;}
 
 .snslogin .kakao {background: yellow;}
 .snslogin .naver {background: rgb(28, 204, 28);}
@@ -27,3 +38,28 @@ img.img + span {display: inline-block;}
 
 .topmenu {display: flex; justify-content: space-around; width: 800px; border: 3px solid silver; border-radius: 15px; padding: 10px 0; margin-bottom: 10px; box-sizing: border-box;}
 .topmenu img {width: 40px; height: 40px; border-radius: 50%;}
+
+.posts {margin-top: 30px;}
+.posts .post {width: 580px; margin-bottom: 20px; padding: 10px; border-bottom: 2px solid #000;}
+.posts .post:last-child {border-bottom: none;}
+.posts .post .writer {display: flex; margin-bottom: 10px;}
+.posts .post .writer div {margin-right: 15px;}
+.posts .post .btn_post {margin: 10px 0;}
+.posts .post .btn_post img {display: inline-block; vertical-align: middle;}
+.posts .post .btn_post span {display: inline-block; vertical-align: middle;}
+.posts .post > img {width: 580px;}
+.posts .post pre {font-size: 1.1em;}
+
+.mypage {width: 800px; border:1px solid black; display: flex; flex-direction: column; margin-top: 30px; padding: 10px;}
+.mypage .userinfo {width: 100%;  display: flex;}
+.mypage .userinfo .img {flex-basis: 250px;}
+.mypage .userinfo .img img {width: 250px; height: 250px; border-radius: 50%;}
+.mypage .userinfo .profile {flex:1; display: flex; flex-direction: column;}
+.mypage .userinfo .profile .field {display: flex; margin: 5px;}
+.mypage .userinfo .profile .field label {flex: 1; padding: 5px; font-weight: bold;}
+.mypage .userinfo .profile .field div {flex: 2; padding: 5px;}
+.mypage .btns{display: flex; margin: 10px 0;}
+.mypage .btns button {flex: 1; padding: 10px; background-color: blue; color:white; font-weight: bold; font-size: 1.0rem; margin: 2px;}
+.userpost {width: 100%; display: grid; grid-template-columns:1fr 1fr 1fr;}
+.userpost div {overflow: hidden; display: flex; height: 250px;}
+.userpost div img {width: 100%;}

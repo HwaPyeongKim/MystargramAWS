@@ -46,6 +46,7 @@
 
 </div>
 
+<!--
 <div class="paging">
     <div>
         <c:if test="${paging.prev}"><a href="main?page=${paging.beginPage-1}">Prev</a></c:if>
@@ -57,5 +58,5 @@
         <c:if test="${paging.next}"><a href="main?page=${paging.endPage+1}">Next</a></c:if>
     </div>
 </div>
-
+-->
 <%@ include file="footer.jsp" %>

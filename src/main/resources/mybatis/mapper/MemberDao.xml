@@ -9,17 +9,25 @@
         select * from member where email = #{email}
     </select>
 
-    <select id="getMemberId" resultType="com.himedia.gram.dto.MemberDto">
-        select * from member where id = #{id}
-    </select>
+    <insert id="insert" parameterType="com.himedia.gram.dto.MemberDto">
+        insert into member (email, pwd, nickname, phone, provider, snsid, profileimg, profilemsg) values (#{email}, #{pwd}, #{nickname}, #{phone}, #{provider}, #{snsid}, #{profileimg}, #{profilemsg})
+    </insert>
 
     <select id="getMemberSns" resultType="com.himedia.gram.dto.MemberDto">
         select * from member where snsid = #{snsid}
     </select>
 
-    <insert id="insert" parameterType="com.himedia.gram.dto.MemberDto">
-        insert into member (email, pwd, nickname, phone, provider, snsid, profileimg, profilemsg) values (#{email}, #{pwd}, #{nickname}, #{phone}, #{provider}, #{snsid}, #{profileimg}, #{profilemsg})
-    </insert>
+    <select id="getMemberId" resultType="com.himedia.gram.dto.MemberDto">
+        select * from member where id = #{id}
+    </select>
+
+    <update id="editProfile" parameterType="com.himedia.gram.dto.MemberDto">
+        update member set email = #{email}, pwd = #{pwd}, nickname = #{nickname}, phone = #{phone}, profileimg = #{profileimg}, profilemsg = #{profilemsg} where id = #{id}
+    </update>
+
+    <select id="checkNickname" resultType="com.himedia.gram.dto.MemberDto">
+        select * from member where nickname = #{nickname}
+    </select>
 
     <select id="selectFollowers" resultType="_int">
         select f.start from follow f where f.end = #{id}

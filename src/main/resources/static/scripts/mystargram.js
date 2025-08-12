@@ -1,5 +1,15 @@
-function like(postid, memberid) {
-    location.href = "like?postid="+postid+"&memberid="+memberid;
+function like(postid, memberid, returnUrl) {
+    var url = "like?postid="+postid+"&memberid="+memberid;
+    if (returnUrl != undefined) {
+        url += "&returnUrl="+returnUrl;
+    }
+    location.href = url;
+}
+
+function deleteReply(postid,replyid) {
+    if (confirm("댓글을 삭제하시겠습니까?")) {
+        location.href = "deleteReply?postid="+postid+"&replyid="+replyid;
+    }
 }
 
 

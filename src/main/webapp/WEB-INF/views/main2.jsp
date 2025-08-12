@@ -8,14 +8,6 @@
     </script>
 </c:if>
 
-<div class="searchbox">
-    <form method="get" action="search">
-        <label for="key">해시태그</label>
-        <input type="text" name="key" value="${key}" id="key" />
-        <input type="submit" value="검색" />
-    </form>
-</div>
-
 <div class="posts">
 
     <c:forEach items="${list}" var="item">

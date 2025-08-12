@@ -204,12 +204,19 @@ public class MemberController {
     }
 
     @GetMapping("/mypage")
-    public String mypage(HttpSession session, Model model) {
-        MemberDto mdto = (MemberDto) session.getAttribute("loginUser");
+    public String mypage(HttpSession session, @RequestParam(value = "email", required = false, defaultValue = "") String email, Model model) {
+        MemberDto mdto = null;
+        if (email.equals("")) {
+            mdto = (MemberDto) session.getAttribute("loginUser");
+        } else {
+            mdto = ms.getMember(email);
+        }
+        System.out.println(mdto);
         String url = "redirect:/";
         if (mdto != null) {
             ArrayList<String> followers = ms.selectFollowers(mdto.getId());
             ArrayList<String> followings = ms.selectFollowings(mdto.getId());
+            model.addAttribute("user", mdto);
             model.addAttribute("followers", followers);
             model.addAttribute("followings", followings);
             model.addAttribute("list", ms.selectPost(mdto.getId()));
@@ -226,6 +233,29 @@ public class MemberController {
             model.addAttribute("dto", mdto);
             url = "member/editProfile";
         }
+        return url;
+    }
+
+    @PostMapping("/editProfile")
+    public String updateMember(@ModelAttribute("dto") MemberDto memberdto, @RequestParam("pwdChk") String pwdChk, BindingResult result, HttpSession session, Model model) {
+        String url = "member/editProfile";
+
+        if (memberdto.getEmail().equals("")) {
+            model.addAttribute("msg", "이메일을 입력해주세요.");
+        } else if (memberdto.getPwd().equals("")) {
+            model.addAttribute("msg", "비밀번호를 입력해주세요.");
+        } else if (!memberdto.getPwd().equals(pwdChk)) {
+            model.addAttribute("msg", "비밀번호가 일치하지 않습니다.");
+        } else if (memberdto.getNickname().equals("")) {
+            model.addAttribute("msg", "닉네임을 입력해주세요.");
+        } else if (memberdto.getPhone().equals("")) {
+            model.addAttribute("msg", "전화번호를 입력해주세요.");
+        } else {
+            ms.editProfile(memberdto);
+            session.setAttribute("loginUser", memberdto);
+            url = "redirect:/main";
+        }
+
         return url;
     }
 }

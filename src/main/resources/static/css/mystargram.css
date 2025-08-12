@@ -40,15 +40,15 @@ img.img + span {display: inline-block;}
 .topmenu img {width: 40px; height: 40px; border-radius: 50%;}
 
 .posts {margin-top: 30px;}
-.posts .post {width: 580px; margin-bottom: 20px; padding: 10px; border-bottom: 2px solid #000;}
-.posts .post:last-child {border-bottom: none;}
-.posts .post .writer {display: flex; margin-bottom: 10px;}
-.posts .post .writer div {margin-right: 15px;}
-.posts .post .btn_post {margin: 10px 0;}
-.posts .post .btn_post img {display: inline-block; vertical-align: middle;}
-.posts .post .btn_post span {display: inline-block; vertical-align: middle;}
-.posts .post > img {width: 580px;}
-.posts .post pre {font-size: 1.1em;}
+.post {width: 580px; margin-bottom: 20px; padding: 10px; border-bottom: 2px solid #000;}
+.post:last-child {border-bottom: none;}
+.post .writer {display: flex; margin-bottom: 10px;}
+.post .writer div {margin-right: 15px;}
+.post .btn_post {margin: 10px 0;}
+.post .btn_post img {display: inline-block; vertical-align: middle;}
+.post .btn_post span {display: inline-block; vertical-align: middle;}
+.post > img {width: 580px;}
+.post pre {font-size: 1.1em;}
 
 .mypage {width: 800px; border:1px solid black; display: flex; flex-direction: column; margin-top: 30px; padding: 10px;}
 .mypage .userinfo {width: 100%;  display: flex;}
@@ -60,6 +60,20 @@ img.img + span {display: inline-block;}
 .mypage .userinfo .profile .field div {flex: 2; padding: 5px;}
 .mypage .btns{display: flex; margin: 10px 0;}
 .mypage .btns button {flex: 1; padding: 10px; background-color: blue; color:white; font-weight: bold; font-size: 1.0rem; margin: 2px;}
+
 .userpost {width: 100%; display: grid; grid-template-columns:1fr 1fr 1fr;}
-.userpost div {overflow: hidden; display: flex; height: 250px;}
-.userpost div img {width: 100%;}
+.userpost {}
+.userpost a {display: inline-block; width: 260px; margin-right: 10px; margin-bottom: 10px; float: left;}
+.userpost a:nth-child(3n) {margin-right: 0;}
+.userpost a img {width: 100%;}
+
+.replies {width: 100%;}
+.replies .write {display: flex;}
+.replies .write input[type=text] {flex: 5;}
+.replies .write input[type=submit] {flex: 1; margin-left: 5px;}
+.replies .reply {border-bottom: 1px solid #999; margin-bottom:5px;}
+.replies .reply a {font-size: 0.9em; font-weight: bold;}
+.replies .reply div {display: flex;}
+.replies .reply div p {flex: 10;}
+.replies .reply div button {flex: 1; margin-left: 5px;}
+.replies .reply div button:hover {color: lightpink;}

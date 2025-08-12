@@ -9,6 +9,7 @@ import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 
@@ -56,5 +57,13 @@ public class MemberService {
     public ArrayList<PostDto> selectPost(int writer) {
         ArrayList<PostDto> list = pdao.selectPost(writer);
         return list;
+    }
+
+    public void editProfile(MemberDto memberdto) {
+        mdao.editProfile(memberdto);
+    }
+
+    public String checkNickname(@RequestParam String nickname) {
+        return mdao.checkNickname(nickname);
     }
 }

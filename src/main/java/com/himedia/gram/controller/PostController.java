@@ -1,6 +1,7 @@
 package com.himedia.gram.controller;
 
 import com.himedia.gram.dto.PostDto;
+import com.himedia.gram.dto.ReplyDto;
 import com.himedia.gram.service.PostService;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,9 +47,13 @@ public class PostController {
     }
 
     @GetMapping("/like")
-    public String like(@RequestParam("postid") int postid, @RequestParam("memberid") int memberid){
+    public String like(@RequestParam("postid") int postid, @RequestParam("memberid") int memberid, @RequestParam(value = "returnUrl", required = false, defaultValue = "") String returnUrl){
         ps.like(postid, memberid);
-        return "redirect:/main";
+        String url = "redirect:/main";
+        if (!returnUrl.equals("")) {
+            url = "redirect:/"+returnUrl+"?id="+postid;
+        }
+        return url;
     }
 
     @GetMapping("/follow")
@@ -67,5 +72,30 @@ public class PostController {
         } else {
             return "redirect:/main";
         }
+    }
+
+    @GetMapping("/postView")
+    public String postView(HttpServletRequest request, @RequestParam("id") int id, Model model){
+        HashMap<String, Object> result = ps.getPost(request, id);
+        model.addAttribute("item", result.get("post"));
+        model.addAttribute("replyList", result.get("replyList"));
+        return "post/postView";
+    }
+
+    @PostMapping("/writeReply")
+    public String writeReply(@ModelAttribute("dto") ReplyDto replydto, BindingResult result, Model model){
+        if (replydto.getReply().equals("")) {
+            model.addAttribute("msg", "내용을 입력해주세요");
+        } else {
+            ps.writeReply(replydto);
+        }
+
+        return "redirect:/postView?id="+replydto.getPostid();
+    }
+
+    @GetMapping("/deleteReply")
+    public String deleteReply(HttpServletRequest request, @RequestParam("postid") int postid, @RequestParam("replyid") int replyid){
+        ps.deleteReply(replyid);
+        return "redirect:/postView?id="+postid;
     }
 }

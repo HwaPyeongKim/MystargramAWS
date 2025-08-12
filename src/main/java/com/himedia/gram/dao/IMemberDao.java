@@ -12,8 +12,9 @@ public interface IMemberDao {
     void insert(MemberDto mdto);
     MemberDto getMemberSns(String snsid);
     MemberDto getMemberId(Integer userid);
+    void editProfile(MemberDto memberdto);
+    String checkNickname(String nickname);
 
     ArrayList<Integer> selectFollowers(int id);
     ArrayList<Integer> selectFollowings(int id);
-
 }

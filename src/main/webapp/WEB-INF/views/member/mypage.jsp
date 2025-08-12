@@ -4,16 +4,16 @@
 <div class="mypage">
     <div class="userinfo">
         <div class="img">
-            <img src="${loginUser.profileimg}" />
+            <img src="${user.profileimg}" />
         </div>
         <div class="profile">
             <div class="field">
                 <label>Email</label>
-                <div>${loginUser.email}</div>
+                <div>${user.email}</div>
             </div>
             <div class="field">
                 <label>Nickname</label>
-                <div>${loginUser.nickname}</div>
+                <div>${user.nickname}</div>
             </div>
             <div class="field">
                 <label>Followers</label>
@@ -24,7 +24,7 @@
                 <div>${followings.size()}</div>
             </div>
             <div class="field">
-                <div>${loginUser.profilemsg}</div>
+                <div>${user.profilemsg}</div>
             </div>
         </div>
     </div>
@@ -36,9 +36,9 @@
 
     <div class="userpost">
         <c:forEach items="${list}" var="item">
-            <div>
+            <a href="postView?id=${item.id}">
                 <img src="${item.image}" />
-            </div>
+            </a>
         </c:forEach>
     </div>
 

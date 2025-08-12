@@ -140,4 +140,30 @@ public class PostService {
 
         return result;
     }
+
+    public HashMap<String, Object> getPost(HttpServletRequest request, int id) {
+        HashMap<String, Object> result = new HashMap<>();
+        PostDto postdto = pdao.getPost(id);
+        ArrayList<ReplyDto> list = pdao.selectReply(id);
+        HttpSession session = request.getSession();
+        MemberDto mdto = (MemberDto) session.getAttribute("loginUser");
+        LikeDto ldto = pdao.selectLike(mdto.getId(), postdto.getId());
+        if (ldto != null) {
+            postdto.setLike("Y");
+        } else {
+            postdto.setLike("N");
+        }
+
+        result.put("post", postdto);
+        result.put("replyList", list);
+        return result;
+    }
+
+    public void writeReply(ReplyDto replydto) {
+        pdao.writeReply(replydto);
+    }
+
+    public void deleteReply(int replyid) {
+        pdao.deleteReply(replyid);
+    }
 }

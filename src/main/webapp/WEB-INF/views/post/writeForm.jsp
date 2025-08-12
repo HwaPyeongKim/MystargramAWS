@@ -2,7 +2,7 @@
 <%@ include file="../header.jsp" %>
 
 <div class="postWrite">
-  <form method="post" action="writePost" name="writeFrm" id="writeFrm" class="form" enctype="multipart/form-data">
+  <form method="post" action="writePost" name="writeFrm" id="writeFrm" class="form imageForm" enctype="multipart/form-data">
     <input type="hidden" name="image" id="image" />
     <input type="hidden" name="writer" value="${loginUser.id}" />
 

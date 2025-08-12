@@ -64,4 +64,16 @@
     <select id="getPost" resultType="com.himedia.gram.dto.PostDto">
         select * from view_post where id = #{postid}
     </select>
+
+    <select id="selectReply" resultType="com.himedia.gram.dto.ReplyDto">
+        select * from view_reply where postid = #{id}
+    </select>
+
+    <insert id="writeReply" parameterType="com.himedia.gram.dto.ReplyDto">
+        insert into reply (memberid, postid, reply) values (#{memberid}, #{postid}, #{reply})
+    </insert>
+
+    <delete id="deleteReply">
+        delete from reply where id = #{replyid}
+    </delete>
 </mapper>

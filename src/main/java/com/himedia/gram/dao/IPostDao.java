@@ -23,8 +23,10 @@ public interface IPostDao {
     void deleteFollow(int memberid, int writer);
 
     ArrayList<Integer> selectPostid(int hashid);
-
     PostDto getPost(Integer postid);
-
     ArrayList<PostDto> selectPost(int writer);
+
+    ArrayList<ReplyDto> selectReply(int id);
+    void writeReply(ReplyDto replydto);
+    void deleteReply(int replyid);
 }

@@ -13,7 +13,7 @@
         $(function(){
 
             $("#imgPrevBtn").change(function(){
-              var form = $("form")[0];
+              var form = $(".imageForm")[0];
               var formData = new FormData(form);
               $.ajax({
                   url: "<%=request.getContextPath() %>/fileup",
@@ -78,5 +78,13 @@
             <a href="#" class="btn_searchbox"><img src="/images/search.png" /></a>
             <a href="mypage"><img src="${loginUser.profileimg}" /></a>
             <a href="logout"><img src="/images/logout.png" /></a>
+        </div>
+
+        <div class="searchbox">
+            <form method="get" action="search">
+                <label for="key">해시태그</label>
+                <input type="text" name="key" value="${key}" id="key" />
+                <input type="submit" value="검색" />
+            </form>
         </div>
     </c:if>
